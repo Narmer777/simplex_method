@@ -1,0 +1,74 @@
+﻿<Window x:Class="IndividualLab.View.WIndows.GraphicalMethodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndividualLab.View.WIndows"
+        mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen"
+        Title="Graphical Method" MinHeight="830" MinWidth="1200" >
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Background="LightGray" VerticalAlignment="Top">
+            <Button Grid.Row="0" DockPanel.Dock="Left" Background="LightGray" Width="100" Height="30" Content="Назад" FontSize="22" Click="Button_Click"/>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize" Content="-" Width="30" Height="30" BorderBrush="Transparent" 
+         Background="Transparent" Click="btnMinimize_Click" />
+                <Button x:Name="btnMaximize" Content="🗖" Width="30" Height="30" BorderBrush="Transparent" 
+         Background="Transparent" Click="btnMaximize_Click" />
+                <Button x:Name="btnClose" Content="X" Width="30" Height="30" BorderBrush="Transparent" 
+         Background="Transparent" Click="btnClose_Click" />
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="mainGrid" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="900"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="3" Margin="5" Grid.Column="0">
+                    <Grid x:Name="graphGrid"/>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="3" Margin="5" Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="taskStackPanel" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Label Content="Задача"  FontSize="26" FontFamily="Cascadia Code SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="3" Margin="5">
+            <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Label Width="100" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Масштаб" FontSize="14" FontWeight="Bold"/>
+                        <Button x:Name="increaseScale" Width="30" Margin="3" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="+" FontSize="18" Click="increaseScale_Click"/>
+                        <Button  x:Name="deacreseScale" Width="30" Margin="3" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="-" FontSize="18" Click="deacreseScale_Click"/>
+                        <Line Fill="Black" StrokeThickness="3" Stroke="Black"/>
+                    </Grid>
+                    <Line Grid.Column="1" X1="0" Y1="0" X2="0" Y2="1" Stroke="Black" 
+                        StrokeThickness="2" Stretch="Fill" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+                    <ScrollViewer Grid.Column ="2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="answerTextBLock" Margin="2" FontSize="20" FontFamily="Cascadia Code SemiBold"/>
+                    </ScrollViewer>
+                </Grid>
+        </Border>
+    </Grid>
+    </Grid>
+</Window>

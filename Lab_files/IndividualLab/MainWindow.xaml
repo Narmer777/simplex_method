@@ -1,0 +1,90 @@
+﻿<Window x:Class="IndividualLab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndividualLab"
+        mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="830" Width="1200" ResizeMode="NoResize">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid x:Name="mainWindowGrid" Loaded="mainWindowGrid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Background="LightGray" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Left" Background="LightGray">
+                <MenuItem x:Name="menuItem" Header="Файл" Height="30" Width="50" HorizontalContentAlignment="Left" FontSize="16">
+                    <MenuItem x:Name="openItem" Header="Открыть" Click="openItem_Click"/>
+                    <MenuItem x:Name="saveItem" Header="Сохранить" Click="saveItem_Click"/>
+                </MenuItem>
+            </Menu>
+            <Label x:Name="fileNameLabel" MaxWidth="1000"/>
+
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize" Content="-" Width="30" Height="30" BorderBrush="Transparent" 
+                    Background="Transparent" Click="btnMinimize_Click"/>
+                <Button x:Name="btnMaximize" Content="🗖" Width="30" Height="30" BorderBrush="Transparent" 
+                    Background="Transparent" Click="btnMaximize_Click"/>
+                <Button x:Name="btnClose" Content="X" Width="30" Height="30" BorderBrush="Transparent" 
+                    Background="Transparent" Click="btnClose_Click"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid x:Name="mainGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="630"/>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="inputStackPanel" Grid.Column="0" Grid.Row="0">
+                    <Label Content="Число переменных" Height="30" Width="200" HorizontalContentAlignment="Center" FontSize="14" FontFamily="Times New Roman"/>
+                    <TextBox x:Name="amountOfXTextBox" Height="30" Width="180" HorizontalAlignment="Center" FontSize="20" TextChanged="amountOfXTextBox_TextChanged_1" PreviewTextInput="amountOfXTextBox_PreviewTextInput" Loaded="amountOfXTextBox_Loaded" />
+                    <Label Content="Число ограничений" Height="30" Width="200" HorizontalContentAlignment="Center" FontSize="14" FontFamily="Times New Roman"/>
+                    <TextBox x:Name="amountOfRestrictionsTextBox" Height="30" Width="180" HorizontalAlignment="Center" FontSize="20" TextChanged="amountOfRestrictionsTextBox_TextChanged" Loaded="amountOfRestrictionsTextBox_Loaded" PreviewTextInput="amountOfRestrictionsTextBox_PreviewTextInput"/>
+                    <Label Content="Метод решения" Height="30" Width="200" HorizontalContentAlignment="Center" FontSize="14" FontFamily="Times New Roman"/>
+                    <ComboBox x:Name="methodComboBox" Width="180" Height="30" FontSize="16" SelectionChanged="methodComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Симплекс"/>
+                        <ComboBoxItem Content="Графический"/>
+                        <!-- Другие методы решения ещё есть!!!-->
+                    </ComboBox>
+                    <Label Content="Вид дробей" Height="30" Width="200" HorizontalContentAlignment="Center" FontSize="14" FontFamily="Times New Roman"/>
+                    <ComboBox x:Name="typeOfNumbersComboBox" Width="180" Height="30" FontSize="16">
+                        <ComboBoxItem Content="Обыкновенные"/>
+                        <ComboBoxItem Content="Десятичные"/>
+                    </ComboBox>
+                    <Label Content="Тип задачи" Height="30" Width="200" HorizontalContentAlignment="Center" FontSize="14" FontFamily="Times New Roman"/>
+                    <ComboBox x:Name="typeOfTaskComboBox" Width="180" Height="30" FontSize="16" >
+                        <ComboBoxItem Content="Минимизировать"/>
+                        <ComboBoxItem Content="Максимизировать"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+                    <Button x:Name="btnRun" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Content="Старт" FontSize="20" Click="btnRun_Click"/>
+                    <Button Content="Случайное заполнение" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Height="30" Width="150" Click="Button_Click"/>
+                    <!--<Button Content="DEBUG" HorizontalAlignment="Left" Margin="5" Grid.Row="1" VerticalAlignment="Center" Width="13" Height="30" RenderTransformOrigin="0.5,0.5" Click="Button_Click_1"/> -->
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid x:Name="matrixAndButtonAcceptGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.99*"/>
+                        <RowDefinition Height="0.01*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row ="0" x:Name="matrixGrid" Margin="1" Background="White" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

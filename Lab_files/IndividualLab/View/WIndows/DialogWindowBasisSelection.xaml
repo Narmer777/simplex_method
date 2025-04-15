@@ -1,0 +1,31 @@
+﻿<Window x:Name="dialogWindowForBasis" x:Class="IndividualLab.View.WIndows.DialogWindowBasisSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndividualLab.View.WIndows"
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="DialogWindowBasisSelection" Height="200" Width="450" Loaded="dialogWindowForBasis_Loaded" ResizeMode="NoResize" MaxHeight="200" MaxWidth="450" MinHeight="200" MinWidth="450" MouseLeftButtonDown="dialogWindowForBasis_MouseLeftButtonDown">
+    <Border BorderThickness="3" BorderBrush="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row ="0">
+                <Label Content="Выберите базис" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" BorderBrush="Black" />
+            </Grid>
+            <Grid x:Name="selectBasisGrid" Grid.Row="1"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="225"/>
+                    <ColumnDefinition Width="225"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="cancelBtn" Grid.Column="0" Height="20" Width="70" Foreground="Black" Content="Отмена" HorizontalAlignment="Right" Margin="0,0,20,0" Click="cancelBtn_Click"/>
+                <Button x:Name="okBtn" Grid.Column="1" Height="20" Width="70" Foreground="Black" Content="OK" HorizontalAlignment="Left" Margin="20,0,0,0" Click="okBtn_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

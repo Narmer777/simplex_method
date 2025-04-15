@@ -1,0 +1,6 @@
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\bin\Debug\ClassLibraryTools.dll
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\bin\Debug\ClassLibraryTools.pdb
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.csproj.AssemblyReference.cache
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.csproj.CoreCompileInputs.cache
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.dll
+F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.pdb
