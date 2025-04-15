@@ -1,0 +1,1028 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassLibraryTools</name>
+    </assembly>
+    <members>
+        <member name="T:ClassLibraryTools.FractionPoint">
+            <summary>
+            Класс, который является точкой, но координаты являются обыкновенными дробями.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:ClassLibraryTools.Graphic.restrictions" -->
+        <member name="P:ClassLibraryTools.Graphic.targetFunction">
+            <summary>
+            Целевая функция, представлена в виде списка коэффициентов.
+            Последний элемент списка представляет свободный член.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.renderedGraph">
+            <summary>
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>, на котором отрисованы все ограничения, целевая функция, точки входящие в решение, полигон(прямая) допустимых решений.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.centerOfCoords">
+            <summary>
+            Центр координат в координатах холста.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.normalVector">
+            <summary>
+            Вектор нормали или антинормали, представленый в виде списка коэффицентов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.pointsOfSolution">
+            <summary>
+            Список всех точек решения, при которых выполняются ограничения, в обычных координатах.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.polygon">
+            <summary>
+            Список точек полигона(прямой) допустимых решений в координатах холста.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.scale">
+            <summary>
+            Коэффицент приближения\отдаления графика.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.fullPointNxNCase">
+            <summary>
+            Если случай n - m = 0 (где n - кол-во переменных; m - кол-во ограничений)
+            Содержит точку решения. Иначе является <see cref="!:null"/>.
+            </summary>
+        </member>
+        <member name="F:ClassLibraryTools.Graphic.BOUNDS_OF_SOLUTION_POLYGON">
+            <summary>
+            Край изначального полигона решений в обычных координатах.
+            </summary>
+        </member>
+        <member name="F:ClassLibraryTools.Graphic.functionColors">
+            <summary>
+            Массив разных цветов, для отрисовки прямых.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.solution">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.free">
+            <summary>
+            Массив индексов свободных переменных.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.basis">
+            <summary>
+            Массив индексов базисных переменных.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.dimensions">
+            <summary>
+            Одномерный случай <see cref="P:ClassLibraryTools.Graphic.dimensions"/> = <see langword="true"/>.
+            Двумерный случай <see cref="P:ClassLibraryTools.Graphic.dimensions"/> = <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Graphic.cellSize">
+            <summary>
+            Размер одной клеточки сетки графика в пикселях на холсте.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.createGrid(System.Boolean)">
+            <summary>
+            Создаёт холст, на котором отображаются все элементы графика.
+            </summary>
+            <param name="firstIteration">
+            Если первый раз происходит отрисовка графика, то находится точка\прямая решения.
+            Если меняется <see cref="P:ClassLibraryTools.Graphic.scale"/>, то решение заново не находится.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawGrid(System.Windows.Controls.Canvas,System.Windows.Media.Brush)">
+            <summary>
+            Отрисовывает сетку графика.
+            </summary>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>, на котором нужно отрисовать.
+            </param>
+            <param name="gridColor">
+            Цвет сетки.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawTicksY(System.Windows.Controls.Canvas)">
+            <summary>
+            Отрисовывает риски для значений на вертикальной оси.
+            </summary>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/> для отрисовки рисок.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawTicksX(System.Windows.Controls.Canvas)">
+            <summary>
+            Отрисовывает риски для значений на горизонтальной оси.
+            </summary>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/> для отрисовки рисок.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawAxis(System.Windows.Controls.Canvas,System.Windows.Media.Brush)">
+            <summary>
+            Отрисовывает горизонтальную ось, если одномерный случай.
+            Отрисовывает вертикальную и горизонтальную ось, если двумерный случай.
+            </summary>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/> для отрисовки.
+            </param>
+            <param name="gridColor">
+            Цвет осей.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawPolygonOfValidSolutions">
+            <summary>
+            Отрисовывает многоугольник допустимых решений.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.CreateLogAboutTask">
+            <summary>
+            Отрисовывает на холсте все данные задачи: вектор нормали(антинормали), ограничения, функцию цели.
+            </summary>
+            <returns>
+            Возвращает холст <see cref="T:System.Windows.Controls.Canvas"/> с данными о задаче.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.CreateStringSolution">
+            <summary>
+            Строит строку с ответом, для отображения в окне для графической задачи.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.createStringForTargetFunction">
+            <summary>
+            Строит строку для отображения целевой функции задачи.
+            </summary>
+            <returns>
+            Возвращает целевую функцию, записанную в строку.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.CreateNormalVectorString">
+            <summary>
+            Строит строку для отображения вектора(нормали\антинормали) задачи.
+            </summary>
+            <returns>
+            Возвращает вектор нормали(антинормали), записанный в строку.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.AddTargetFunAndRestrictionsAndNormalVectorToLog(System.Double,System.Double,System.Double,System.Collections.Generic.List{System.Collections.Generic.List{System.String}},System.Double,System.Double,System.Windows.Controls.Canvas)">
+            <summary>
+            Добавляет строки целевой функции, вектор нормали(антинормали), ограничений на холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </summary>
+            <param name="fontSize">
+            Размер шрифта.
+            </param>
+            <param name="height">
+            Высота каждой строки.
+            </param>
+            <param name="maxWidth">
+            Максимальная длина строки.
+            </param>
+            <param name="restrictionsStr">
+            Все строки целевой функции, вектор нормали(антинормали).
+            </param>
+            <param name="x">
+            Отклонения от левого края холста <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+            <param name="y">
+            Отклонение от верхнего края холста <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.AddAxisLabel(System.Windows.Controls.Canvas,System.String,System.Double,System.Double,System.Int32)">
+            <summary>
+            Добавляет надпись на холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </summary>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+            <param name="text">
+            Текст.
+            </param>
+            <param name="x">
+            Отклонения от левого края холста <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+            <param name="y">
+            Отклонение от верхнего края холста <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+            <param name="fontSize">
+            Размер шрифта.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawFunction(System.Collections.Generic.List{System.Double},System.Windows.Media.Brush)">
+            <summary>
+            Запускает функции отрисовки функции, в зависимости, от того, двумерная ли это прямая или одномерная.
+            </summary>
+            <param name="function">
+            Функция прямой, представленная в виде массива коэффицентов.
+            </param>
+            <param name="color">
+            Цвет отрисовки функции.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawVector">
+            <summary>
+            Отрисовывает вектор нормали(антинормали).
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawFunctionWithTwoDimensions(System.Collections.Generic.List{System.Double},System.Windows.Media.Brush)">
+            <summary>
+            Отрисовывает двумерную прямую.
+            </summary>
+            <param name="function">
+            Функция прямой, представленная в виде массива коэффицентов.
+            </param>
+            <param name="color">
+            Цвет отрисовки функции.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawFunctionWithOneDimension(System.Collections.Generic.List{System.Double},System.Windows.Media.Brush,System.String)">
+            <summary>
+            Отрисовывает одномерную прямую.
+            </summary>
+            <param name="function">
+            Функция прямой, представленная в виде массива коэффицентов.
+            </param>
+            <param name="color">
+            Цвет отрисовки функции.
+            </param>
+            <param name="alligment">
+            Является ли эта прямая вертикальной или горизонтальной.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawIntersectPointTwoDimensional(ClassLibraryTools.FractionPoint,System.Windows.Media.Brush)">
+            <summary>
+            Отрисовывают точку пересечения двух двумерных ограничений, если она подходит под все ограничения.
+            </summary>
+            <param name="intersectPointFraction">
+            Точка пересечения.
+            </param>
+            <param name="color">
+            Цвет точки.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.DrawIntersectPointOneDimensional(ClassLibraryTools.FractionPoint,System.Windows.Media.Brush)">
+            <summary>
+            Отрисовывают точку пересечения одномерного ограничения, если она подходит под все ограничения.
+            </summary>
+            <param name="intersectPointFraction">
+            Точка пересечения.
+            </param>
+            <param name="color">
+            Цвет точки.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.FindSolution">
+            <summary>
+            Поиск решения, если оно существует.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.FindSolutionInConstraintedPolygon">
+            <summary>
+            Поиск точки\прямой решения из массива допустимых точек решения <see cref="P:ClassLibraryTools.Graphic.pointsOfSolution"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.TransformPoint(System.Windows.Point)">
+            <summary>
+            Преобразование точки в координаты холста <see cref="T:System.Windows.Controls.Canvas"/>.
+            </summary>
+            <param name="point"></param>
+            <returns>
+            Возвращает точку на холсте.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.FindPolygonOfValidSolutions(System.Windows.Controls.Canvas)">
+            <summary>
+            Находит точки многоугольника решений на холсте и отрисовывает его.
+            Нахождение точек многоугольника решений происходит с помощью "отсечений" от начальной области(первой четверти графика) частей с помощью ограничений.
+            </summary>
+            <param name="canvas">
+            
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.AddFunctionAndIntersection">
+            <summary>
+            Запускает для каждого ограничения функцию отрисовки прямых.
+            И для каждой точки пересечения ограничений запускает функцию отрисовки точки.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.findIntersectionPoint(System.Collections.Generic.List{IndividualLab.Fraction},System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Нахождение точек пересечения между двумя ограничениями.
+            </summary>
+            <param name="func">
+            Первое ограничение, представленное в виде массива коэффицентов.
+            </param>
+            <param name="func1">
+            Второе ограничение, представленное в виде массива коэффицентов
+            </param>
+            <returns>
+            Точку пересечения двух ограничений.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Если система ограничений несовместна.
+            </exception>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.findIntersectionPointWihtAxises(System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Находит две точки пересечения ограничения с вертикальной и горизонтальной прямой.
+            </summary>
+            <param name="func">
+            Ограничение.
+            </param>
+            <returns>
+            Возвращает кортеж из точки пересечения с горизонтальной осью и из точки пересечения с вертикальной осью.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.SortPointsClockwise(System.Collections.Generic.List{System.Windows.Point})">
+            <summary>
+            Сортирует точки по часовой стрелке.
+            </summary>
+            <param name="points">
+            Массив содержащий точки.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.UpdateScale(System.Double)">
+            <summary>
+            Обновление <see cref="P:ClassLibraryTools.Graphic.scale"/>, отрисовка графика с новый скалированием.
+            </summary>
+            <param name="newScale">
+            Новый <see cref="P:ClassLibraryTools.Graphic.scale"/>
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.GetColorForFunction(System.Int32)">
+            <summary>
+            Получает по индексу цвет из массива цветов.
+            </summary>
+            <param name="index">
+            Индекс.
+            </param>
+            <returns>
+            Возвращает цвет.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.checkRestrictions(ClassLibraryTools.FractionPoint)">
+            <summary>
+            Проверяет точку.
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.CreateRestrictionText(System.Int32,System.Int32)">
+            <summary>
+            Строит строку из ограничения.
+            </summary>
+            <param name="row">
+            Индекс строки из двумерного массива ограничений.
+            </param>
+            <param name="cols">
+            Кол-во колонок в двумерном массиве ограничений <see cref="P:ClassLibraryTools.Graphic.restrictions"/>.
+            </param>
+            <returns>
+            Возвращает ограничение, преобразованное в строку.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Graphic.createArrow(System.Windows.Shapes.Line,System.Windows.Controls.Canvas)">
+            <summary>
+            Создаёт стрелочку на конце прямой <see cref="T:System.Windows.Shapes.Line"/>.
+            </summary>
+            <param name="xAxis">
+            Прямая <see cref="T:System.Windows.Shapes.Line"/>.
+            </param>
+            <param name="canvas">
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </param>
+        </member>
+        <member name="T:ClassLibraryTools.TableUpdatedEventHandler">
+            <summary>
+            Делегат для обработки событий обновления таблицы.
+            </summary>
+            <param name="sender"><see cref="!:Label"/>, который вызвал событие.</param>
+            <param name="e">Данные события.</param>
+        </member>
+        <member name="T:ClassLibraryTools.ISimplexTableNotifier">
+            <summary>
+            Интерфейс для объектов, которые уведомляют об обновлении симплекс-таблицы.
+            </summary>
+        </member>
+        <member name="E:ClassLibraryTools.ISimplexTableNotifier.TableUpdated">
+            <summary>
+            Событие, возникающее при обновлении симплекс-таблицы.
+            </summary>
+        </member>
+        <member name="T:ClassLibraryTools.Gauss">
+            <summary>
+            Класс, имеющий функции выполняющие метод Гаусса.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Gauss.GMethod(System.Collections.Generic.List{System.Int32},IndividualLab.Fraction[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Выполняет метод Гаусса для приведения матрицы ограничений к ступенчатому виду.
+            </summary>
+            <param name="Minor">Список индексов базисных элементов (минор).</param>
+            <param name="Matrix">Двумерный массив с коэффициентами системы ограничений.</param>
+            <param name="number_of_rows">Количество строк в матрице.</param>
+            <param name="number_of_cols">Количество столбцов в матрице.</param>
+            <returns>Матрица в ступенчатом виде с нормализованными диагональными элементами.</returns>
+            <exception cref="T:System.Exception">
+            Выбрасывается, если невозможно привести матрицу к ступенчатому виду, 
+            что происходит, когда ведущий элемент равен нулю в процессе нормализации.
+            </exception>
+        </member>
+        <member name="M:ClassLibraryTools.Gauss.SwapRows(IndividualLab.Fraction[0:,0:],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Меняет строки местами.
+            </summary>
+            <param name="Matrix">Матрица коэффицентов.</param>
+            <param name="number_of_cols">Количество столбцов в матрице.</param>
+            <param name="row1">Индекс первой строки для смены местами со второй строкой.</param>
+            <param name="row2">Индекс второй строки для смены местами с первой строкой.</param>
+            <returns>
+            Возвращает матрицу коэффицентов с поменяными строками.
+            </returns>
+        </member>
+        <member name="T:ClassLibraryTools.SimplexTable">
+            <summary>
+            Класс, который является симплекс-таблицей.
+            </summary>
+        </member>
+        <member name="E:ClassLibraryTools.SimplexTable.OnLabelClicked">
+            <summary>
+            Событие, вызываемое при нажатии на опорный элемент в симплекс-таблице при пошаговом методе решения.
+            </summary>
+            <param name="oldTable">Предыдущая версия симплекс-таблицы.</param>
+            <param name="newTable">Обновленная версия симплекс-таблицы.</param>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.basis">
+            <summary>
+            Базисные переменные, представленные в виде массива индексов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.free">
+            <summary>
+            Свободные переменные, представленные в виде массива индексов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.matrix">
+            <summary>
+            Матрица ограничений и целевой функции, представленная в виде двумерного массива коэффицентов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.renderedTable">
+            <summary>
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>, на котором отображена таблица.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.renderedTablesLog">
+            <summary>
+            Холст <see cref="T:System.Windows.Controls.Canvas"/>, на котором изображён выбранные опорный элемент у данной таблицы <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.numberOfX">
+            <summary>
+            Количество переменных.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.artificialTable">
+            <summary>
+            Флаг <see cref="P:ClassLibraryTools.SimplexTable.artificialTable"/> = <see cref="!:true"/> - таблица является искусственной. <br></br>
+            Флаг <see cref="P:ClassLibraryTools.SimplexTable.artificialTable"/> = <see cref="!:false"/> - таблица не является искусственной.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.idleStep">
+            <summary>
+            Флаг <see cref="P:ClassLibraryTools.SimplexTable.idleStep"/> = <see cref="!:true"/> - надо сделать холостой шаг, либо удалить искуственные переменные, независящие от начальный переменных.
+            Иначе <see cref="P:ClassLibraryTools.SimplexTable.idleStep"/> = <see cref="!:false"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.numberOfRestrictions">
+            <summary>
+            Количество ограничений.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.iteration">
+            <summary>
+            Номер итерации.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.resultIteration">
+            <summary>
+            Строка, в которой описан конец итерации.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.selectedRefElement">
+            <summary>
+            Опорный элемент, представленный в виде индекса строки и столбца в матрице <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.permissionPairs">
+            <summary>
+            Все возможные опорные элементы, представленные в виде словаря - column1 : {row1, row2} ит.д
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.permissionColumns">
+            <summary>
+            Множество для хранения опорных строк.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.SimplexTable.functionValue">
+            <summary>
+            Значение целевой функции в данной <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.findFreeX">
+            <summary>
+            Находит свободные переменные.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.simplexStep(System.Int32,System.Int32)">
+            <summary>
+            Шаг симплекс таблицы.
+            </summary>
+            <param name="permission_row">
+            Индекс опорной строки.
+            </param>
+            <param name="permission_column">
+            Индекс опорного столбца.
+            </param>
+            <returns>
+            Возвращает новую матрицу коэффицентов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.renderTable">
+            <summary>
+            Отрисовывает симплекс-таблицу <see cref="T:ClassLibraryTools.SimplexTable"/> на холсте <see cref="T:System.Windows.Controls.Canvas"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.renderTablesLog">
+            <summary>
+            Отрисовывает выбранный опорный элемент у данной таблицы на холст <see cref="T:System.Windows.Controls.Canvas"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.FindPermRowAndColumns">
+            <summary>
+            Поиск опорного(-ых) элемента(-ов).
+            </summary>
+            <returns>
+            Возвращает результат симплекс таблицы, можно ли сделать следующую итерацию или нет.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.findMinPermissionColumns(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Находит минимальный опорный столбец.
+            </summary>
+            <param name="bad_columns">
+            Столбцы, которые не подходят для выбора в них опорной строки.
+            </param>
+            <returns>
+            Список индексов опорных столбцов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.findPermissionRow(System.Int32)">
+            <summary>
+            Находит индекс опорной строки.
+            </summary>
+            <param name="permission_column">
+            Возвращает индекс опорной строки.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.findPermissionRows(System.Int32)">
+            <summary>
+            Возвращает список индексов опорных строк.
+            </summary>
+            <param name="permission_column">
+            Индекс опорного столбца.
+            </param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ClassLibraryTools.SimplexTable.checkForMatrixThatFreeXArePositiveValue" -->
+        <member name="M:ClassLibraryTools.SimplexTable.findPlanToOutput">
+            <summary>
+            Преобразовывает план в строку.
+            </summary>
+            <returns>
+            Возвращает план, преобразованный в строку.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.Label_Click(System.Object,System.EventArgs)">
+            <summary>
+            Событие, которое вызывается при нажатии на опорный элемент в таблице.
+            </summary>
+            <param name="sender">
+            <see cref="T:System.Windows.Controls.Label"/>, который вызвал событие.
+            </param>
+            <param name="e">
+            Данные события.
+            </param>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.findPermissionElementsForIdleStep">
+            <summary>
+            Нахождение опорных элементов при холостом шаге.
+            </summary>
+            <returns>
+            Возвращает результат симплекс таблицы, можно ли сделать следующую итерацию или нет.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.SimplexTable.deleteRow(System.Int32)">
+            <summary>
+            Удаление строки из матрицы коэффицентов <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </summary>
+            <param name="row">
+            Индекс строки.
+            </param>
+        </member>
+        <member name="T:ClassLibraryTools.Utils">
+            <summary>
+            Класс, в котором находятся функции для различных подсчётов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.tables">
+            <summary>
+            Список симплекс-таблиц <see cref="T:ClassLibraryTools.SimplexTable"/> всех итераций.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.stepByStepMethod">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.stepByStepMethod"/> = <see langword="true"/> - пошаговый метод решения. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.stepByStepMethod"/> = <see langword="false"/> - автоматический метод решения. <br></br>
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.artificialBasisMethod">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.artificialBasisMethod"/> = <see langword="true"/> - метод искусственного базиса. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.artificialBasisMethod"/> = <see langword="false"/> - симплекс метод. <br></br>
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.doubleFlag">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.doubleFlag"/> = <see langword="true"/> - десятичные дроби. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.doubleFlag"/> = <see langword="false"/> - обыкновенные дроби. <br></br>
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.minimize">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.minimize"/> = <see langword="true"/> - задача минимизации. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.minimize"/> = <see langword="false"/> - задача максимизации. <br></br> 
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.numberOfVariables">
+            <summary>
+            Количество переменных.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.numberOfRestriction">
+            <summary>
+            Количество ограничений.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.artBasis">
+            <summary>
+            Искусственные переменные, представленные в виде списка индексов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.targetFun">
+            <summary>
+            Целевая функция, представленная в виде списка коэффицентов.
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.NxNCase">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.NxNCase"/> = <see langword="true"/> - графический метод: случай - (n - m = 0), 
+            где n - количество переменных, m - количество ограничений. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.NxNCase"/> = <see langword="false"/> - иной случай. <br></br>  
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.graphicalMethod">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.graphicalMethod"/> = <see langword="true"/> - графический метод. <br></br>
+            <see cref="P:ClassLibraryTools.Utils.graphicalMethod"/> = <see langword="false"/> - иной метод. <br></br>  
+            </summary>
+        </member>
+        <member name="P:ClassLibraryTools.Utils.Equations">
+            <summary>
+            <see cref="P:ClassLibraryTools.Utils.Equations"/> = <see langword="true"/> - в графическом методе ограничения вида <br></br> 1) ax + by = c <br></br> 2) ax = c <br></br>
+            <see cref="P:ClassLibraryTools.Utils.Equations"/> = <see langword="false"/> - иначе. <br></br> 
+            </summary>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.makeLowerIndex(System.Int32)">
+            <summary>
+            Преобразует число в нижний индекс.
+            </summary>
+            <param name="number">
+            Число.
+            </param>
+            <returns>
+            Возвращает строку с нижним индексом.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.makeUpperIndex(System.Int32)">
+            <summary>
+            Преобразует число в верхний индекс.
+            </summary>
+            <param name="number">
+            Число.
+            </param>
+            <returns>
+            Возвращает строку с верхним индексом.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.GetMaxLabelWidth(System.Collections.Generic.List{System.Collections.Generic.List{System.String}},System.Double)">
+            <summary>
+            Вычисляет ширину строки в <see cref="T:System.Double"/>.
+            </summary>
+            <param name="rows">
+            Двумерный массив строк.
+            </param>
+            <param name="fontSize">
+            Размер шрифта.
+            </param>
+            <returns>
+            Возвращает ширину строки.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createTargetFun(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{IndividualLab.Fraction},IndividualLab.Fraction[0:,0:])">
+            <summary>
+            Вычисление целевой функции для симплекс-таблицы <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </summary>
+            <param name="basis">
+            Базисные переменные, представленные списком индексов базисных переменных.
+            </param>
+            <param name="targetFun">
+            Целевая функция.
+            </param>
+            <param name="newMatrix">
+            Матрица коэффицентов ограничений.
+            </param>
+            <returns>
+            Возвращает целевую функцию, представленную в виде списка коэффицентов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.DoIteration(ClassLibraryTools.SimplexTable,System.Boolean)">
+            <summary>
+            Выполнение одной итерации симплекс метода.
+            </summary>
+            <param name="simplexTable">
+            Начальная симплекс-таблица <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </param>
+            <param name="idleStep">
+            Флаг, является ли итерация холостым шагом.
+            </param>
+            <returns>
+            Возвращает новую симплекс-таблицу <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createMatrixForSimplex(System.Collections.Generic.List{System.Int32},IndividualLab.Fraction[0:,0:],System.Int32,System.Int32,System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Создание матрицы коэффицентов ограничений и целевой функции для начальной симплекс-таблицы <see cref="T:ClassLibraryTools.SimplexTable"/>. 
+            </summary>
+            <param name="basis">
+            Базисные переменные, представленные списком индексов.
+            </param>
+            <param name="restrictions">
+            Ограничения, представленные в виде двумерного массива коэффицентов.
+            </param>
+            <param name="numberOfRestrictions">
+            Количество ограничений.
+            </param>
+            <param name="numberOfX">
+            Количество переменных.
+            </param>
+            <param name="targetFun">
+            Целевая функция задачи, представленная в виде списка коэффицентов.
+            </param>
+            <returns>
+            Матрицу ограничений и целевой функции <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Если с данным базисом невозможно сформировать ступенчатую матрицу коэффицентов.
+            </exception>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.deleteBasisColumns(IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Удаление базисных столбцов из матрицы.
+            </summary>
+            <param name="matrix">
+            Матрица.
+            </param>
+            <param name="basis">
+            Базисные переменные, представленные списком индексов.
+            </param>
+            <returns>
+            Новая матрица без базисных столбцов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.swapBasisAndFreeX(System.Int32,System.Int32,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Меняет базисную и свободную переменную местами.
+            </summary>
+            <param name="perm_row">
+            Индекс опорной строки.
+            </param>
+            <param name="perm_col">
+            Индекс опорного столбца.
+            </param>
+            <param name="basis">
+            Базисные переменные, представленные списком индексов.
+            </param>
+            <param name="free">
+            Свободные переменные, представленные списком индексов.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createMatrixForArtificialBasis(IndividualLab.Fraction[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Создание матрицы коэффицентов ограничений и целевой функции для начальной искусственной симплекс-таблицы <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </summary>
+            <param name="restrictions">
+            Ограничения, представленные в виде матрицы коэффицентов.
+            </param>
+            <param name="numberOfRestrictions">
+            Количество ограничений.
+            </param>
+            <param name="numberOfX">
+            Количество переменных.
+            </param>
+            <returns>
+            Матрицу ограничений и целевой функции <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createMatrixForSimplexAfterArtficial(System.Collections.Generic.List{System.Int32},IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{IndividualLab.Fraction},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Создание матрицы ограничений и целевой функции для симплекс-метода после метоа искусственного базиса.
+            </summary>
+            <param name="artBasis">Искуственные переменные, представленные списком индексов.</param>
+            <param name="matrix">Конечная матрица <see cref="P:ClassLibraryTools.SimplexTable.matrix"/> ограничений и целевой функции метода искусственного базиса.</param>
+            <param name="targetFun">Целевая функция.</param>
+            <param name="free">Свободные переменные метода искусственного, представленные списком индексов.</param>
+            <param name="basis">Базисные переменные, представленные списком индексов.</param>
+            <param name="restrictions">Ограничения, представленные в виде матрицы коэффицентов.</param>
+            <param name="newFree">Свободные переменные без искусственных переменных, представленные списком индексов.</param>
+            <returns>
+            Матрицу ограничений и целевой функции <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.findBasis(IndividualLab.Fraction[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Поиск базиса, при котором возможно привести матрицу к ступенчатому виду.
+            </summary>
+            <param name="restrictions">Матрица.</param>
+            <param name="numberOfVariables">Количество переменных.</param>
+            <param name="numberOfRestrictions">Количество строк.</param>
+            <returns>
+            Базисные переменные, представленные списком индексов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.GetCombinationsRecursive(System.Collections.Generic.List{System.Int32},System.Int32,System.Int32,System.Int32[],System.Int32)">
+            <summary>
+            Рекурсивный метод для генерации всех возможных комбинаций указанного размера из заданного списка.
+            </summary>
+            <param name="array">Список элементов, из которых создаются комбинации.</param>
+            <param name="combinationSize">Размер каждой комбинации.</param>
+            <param name="index">Текущий индекс в исходном списке для обработки.</param>
+            <param name="Result">Массив, используемый для хранения текущей комбинации.</param>
+            <param name="depth">Текущая глубина рекурсии, отражающая количество уже добавленных элементов.</param>
+            <returns>
+            Перечисление, содержащее все возможные комбинации указанного размера из исходного списка.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.GetCombinations(System.Collections.Generic.List{System.Int32},System.Int32)">
+            <summary>
+            Метод для получения всех возможных комбинаций заданного размера из списка.
+            </summary>
+            <param name="array">Список элементов, из которых создаются комбинации.</param>
+            <param name="combinationSize">Размер каждой комбинации.</param>
+            <returns>
+            Перечисление, содержащее все возможные комбинации указанного размера из исходного списка.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createRestrictionsForGraphMethod(IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Создание матрицы ограничений, представленной в виде матрицы коэффицентов для графического метода.
+            </summary>
+            <param name="restrictions">Ограничения, представленные в виде матрицы ограничений.</param>
+            <param name="basisX">Базисные переменные, представленные списком индексов.</param>
+            <returns>
+            Ограничения, представленные в виде матрицы коэффицентов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.createTargetFunForGraphMethod(IndividualLab.Fraction[0:,0:])">
+            <summary>
+            Создание целевой функции для графического метода после формирования матрицы целевой функции и ограничений для симплекс-таблицы.
+            </summary>
+            <param name="restrctions">
+            Матрицы целевой функции и ограничений для симплекс-таблицы <see cref="P:ClassLibraryTools.SimplexTable.matrix"/>.
+            </param>
+            <returns>
+            Целевую функцию, представленную в виде списка коэффицентов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.findFreeX(System.Collections.Generic.List{System.Int32},System.Int32)">
+            <summary>
+            Нахождение свободных переменных.
+            </summary>
+            <param name="basis">Базисные переменные, представленные списком индексов.</param>
+            <param name="numberOfX">Количество переменных.</param>
+            <returns>
+            Свободные переменные, представленные списком индексов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.deleteBasisXFromTargetFun(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Удаление базисных переменных из функции цели.
+            </summary>
+            <param name="basis">Базисные переменные, представленные списком индексов.</param>
+            <param name="targetFun">Функция цели.</param>
+            <returns>
+            Целевую функцию, представленную в виде списка коэффицентов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.Copy(IndividualLab.Fraction[0:,0:])">
+            <summary>
+            Копирование двумерного массива.
+            </summary>
+            <param name="source">Исходный двумерный массив.</param>
+            <returns>
+            Копия.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.FindZerosColumns(IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Нахождение нулевых столбцов в задаче оптимизации.
+            </summary>
+            <param name="source">Ограничения, представленные матрицей коэффицентов.</param>
+            <param name="targetFun">Функция цели, представленная списком коэффицентов.</param>
+            <returns>
+            Список индексов нулевых столбцов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.CreateMatrixOfRestrictionsForNxN(IndividualLab.Fraction[0:,0:],System.Int32)">
+            <summary>
+            Создание матрицы ограничений для графического метода, случая n - m = 0. (где n - количество переменных, m - количество ограничений).
+            </summary>
+            <param name="source">Исходная матрица ограничений.</param>
+            <param name="n">Количество переменных.</param>
+            <returns>
+            Матрицу ограничений для графического метода.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.CreateTargetFunForNxN(IndividualLab.Fraction[0:,0:],System.Collections.Generic.List{IndividualLab.Fraction},System.Int32)">
+            <summary>
+            Создание целевой функции для графического метода, случая n - m = 0. (где n - количество переменных, m - количество ограничений).
+            </summary>
+            <param name="source">Исходная матрица ограничений.</param>
+            <param name="targetFun">Исходная целевая функция.</param>
+            <param name="n">Количество переменных.</param>
+            <returns>
+            Целевую функцию для графического метода.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.SwapColumns(IndividualLab.Fraction[0:,0:])">
+            <summary>
+            Меняет местами первые два столбца в матрице коэффициентов.
+            </summary>
+            <param name="source">
+            Исходная матрица коэффициентов, в которой требуется поменять местами столбцы.
+            </param>
+            <returns>
+            Новая матрица, в которой первые два столбца поменяны местами, а остальные остаются без изменений.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.RemoveDuplicates(System.Collections.Generic.List{ClassLibraryTools.FractionPoint})">
+            <summary>
+            Удаление одинаковых точек из списка точек <see cref="T:ClassLibraryTools.FractionPoint"/>.
+            </summary>
+            <param name="points">Список точек.</param>
+            <returns>
+            Список точек без дубликатов.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.CreatePointFullPointForNxNCase(IndividualLab.Fraction[0:,0:])">
+            <summary>
+            Создание точки ответа для графического метода, случая n - m = 0. (где n - количество переменных, m - количество ограничений).
+            </summary>
+            <param name="matrix">Матрица ограничений.</param>
+            <returns>
+            Точка ответа представлена в виде списка.
+            </returns>
+        </member>
+        <member name="M:ClassLibraryTools.Utils.ClearAllFields">
+            <summary>
+            Очищает поля данного класса <see cref="T:ClassLibraryTools.Utils"/>.
+            </summary>
+        </member>
+        <member name="T:IndividualLab.Fraction">
+            <summary>
+            Класс для работы с дробями.
+            </summary>
+        </member>
+    </members>
+</doc>

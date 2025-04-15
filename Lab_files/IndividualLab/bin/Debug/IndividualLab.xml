@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndividualLab</name>
+    </assembly>
+    <members>
+        <member name="T:IndividualLab.Controller">
+            <summary>
+            Класс для распределения задач.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.Controller.win">
+            <summary>
+            Экземпляр окна для вывода симплекс-метода.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.Controller.mainWindow">
+            <summary>
+            Экземпляр главного окна.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.Controller.data">
+            <summary>
+            Данные о задаче, полученные в главном окне.
+            </summary>
+        </member>
+        <member name="M:IndividualLab.Controller.DoTask(IndividualLab.InputData,IndividualLab.MainWindow)">
+            <summary>
+            Функция, которая запускает выбранный метод решения.
+            </summary>
+            <param name="data1">Входные данные о задаче.</param>
+            <param name="mainWindow1">Экземпляр главного окна.</param>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка. 
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.GraphicalMethod">
+            <summary>
+            Функция, которая запускает графический метод.
+            <para>
+            Разбираются случаи: (n - кол-во переменных; m - кол-во ограничений). <br></br>
+            1) n - m = 2 ; <br></br>
+            2) n - m = 1 ; <br></br>
+            3) n = 2, 1 &lt;= m &lt;= 16 ; <br></br>
+            4) n - m = 0 ; <br></br>
+            </para>
+            <para>
+            Если n - m = 2; n - m = 1, и базис автоматический, то строится 
+            искусственная симплекс-таблица и методом искусственного базиса находится 
+            начальный базис. Если базис выбранный или он нашелся после выполнения метода 
+            искусственного базиса, то выполняется симплекс-метод и проверяется, существует ли 
+            решение для данной задачи.
+            </para>
+            </summary>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка.
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.StartGraphic(System.Collections.Generic.List{IndividualLab.Fraction},IndividualLab.Fraction[0:,0:],System.String,System.Collections.Generic.List{IndividualLab.Fraction})">
+            <summary>
+            Создаётся экземпляр класса <see cref="T:ClassLibraryTools.Graphic"/>.
+            Создаётся экземпляр окна для вывода графического метода <see cref="T:IndividualLab.View.WIndows.GraphicalMethodWindow"/>.
+            Выводятся все данные для графического метода в окно для вывода данных графического метода.
+            </summary>
+            <param name="targetFunctionForGraph">Преобразованная для графического метода целевая функция.</param>
+            <param name="restrictionsForGraph">Преобразованная матрица ограничений для графического метода.</param>
+            <param name="solution">Пустая строка, если случай одномерный. Если двумерный, то передаётся существует ли ответ, либо задач неразрешима.</param>
+            <param name="point">В случае n - m = 0. 
+            Передаётся точка из всех ограничений. Так как в этом случае у нас ступенчатая матрица. 
+            Иначе <see langword="null"/>
+            </param>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка.
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.ChoosenBasisGraphicalMethod">
+            <summary>
+            Для выбранного базиса с помощью симплекс-метода выполняется проверка существования ответа.
+            </summary>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка.
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.AutoBasisGraphicalMethod">
+            <summary>
+            Для автоматического базиса для графического метода запускается метод искусственного базиса.
+            Если решение смогло найтись, то запускается симплекс метод, и проверяется есть ли решение.
+            Если базис не нашёлся, то помечается, что решения не существует.
+            </summary>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка.
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.CreateMatrixOfRestrictionsForGraphMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция для создания матрицы ограничений для графического метода после метода искусственного базиса.
+            </summary>
+            <param name="simplexTable">
+            Первая построенная итерация искусственной симплекс-таблицы.
+            </param>
+            <returns>
+            Строка с описанием ошибки, если произошла ошибка.
+            Если ошибок нет, возвращает <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.StartArtificialBasis">
+            <summary>
+            Запуск метода искусственного базиса.
+            </summary>
+            <returns>
+            Если произошла ошибка возвращает <see cref="!:null"/>.
+            Если ошибок нет, то возвращает кортеж из первой искусственной <see cref="T:ClassLibraryTools.SimplexTable"/> и
+            из конечной искуственной <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.StartSimplexMethod(System.Boolean)">
+            <summary>
+            Если <see cref="!:ChoosenBasis"/> = <see cref="!:true"/>, то возвращает сформированную первую симплекс-таблицу.
+            Если <see cref="!:ChoosenBasis"/> = <see cref="!:false"/>, то возвращает конечную симплекс-таблицу, чтобы проверить существование решения.
+            </summary>
+            <param name="ChoosenBasis">
+            Флаг, нужный для того, чтобы определить возвращать первую сформированную симплекс таблицу.
+            Или пройти все итерации, чтобы проверить существование решения.
+            </param>
+            <returns>
+            Если есть ошибка, возвращает <see langword="null"/>.
+            Иначе возвращает <see cref="T:ClassLibraryTools.SimplexTable"/>.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.artificialBasis">
+            <summary>
+            Функция для создания симплекс-таблицы для метода искусственного базиса.
+            </summary>
+            <returns>
+            Если ошибок при создании симплекс-таблицы ошибок нет возвращает <c>null</c>.
+            Если ошибка есть возвращает строку с описанием ошибки.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.choosenBasis">
+            <summary>
+            Функция для создания симплекс-таблицы с выбранным базисом.
+            </summary>
+            <returns>
+            Если ошибок при создании симплекс-таблицы ошибок нет возвращает <c>null</c>.
+            Если ошибка есть возвращает строку с описанием ошибки.
+            </returns>
+        </member>
+        <member name="M:IndividualLab.Controller.autoSimplexMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция для запуска автоматического симплекс-метода и вывода ответа. 
+            Если выбран метод искуственного базиса, то функция запускается сначала для икусственной таблицы,
+            затем для результирующей таблицы, и в конце выводится ответ.
+            </summary>
+            <param name="simplexTable">Начальная симплекс таблица.</param>
+        </member>
+        <member name="M:IndividualLab.Controller.stepByStepSimplexMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая выводит начальную симплекс таблицу, если существуют следующие итерации, 
+            то существует возможность нажать на опорный элемент в выведенной симплекс-таблице.
+            </summary>
+            <param name="simplexTable">Начальная симплекс-таблица.</param>
+        </member>
+        <member name="M:IndividualLab.Controller.stepByStepArtificialBasisMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая выводит начальную искусственную таблицу, если существуют следующие итерации,
+            то существует возможность нажать на опорный элемент в искусственной симплекс-таблице.
+            </summary>
+            <param name="simplexTable">Начальная искусственная симплекс-таблица.</param>
+        </member>
+        <member name="M:IndividualLab.Controller.HandleLabelClickedArtificialBasisMethod(ClassLibraryTools.SimplexTable,ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая удаляет все таблицы в выводе до таблицы, из которой выбран опорный элемент.
+            И выводит следующую таблицу. Если исскуственный базис не может быть найден - выводится ответ,
+            Если искусственный базис найден, то запускается пошаговый симплекс-метод.
+            </summary>
+            <param name="oldTable">
+            Старая искусственная симплекс-таблица, в которой выбран опорный элемент.
+            </param>
+            <param name="newTable">
+            Новая искусственная симплекс-таблица, 
+            которая построена на основе выбранного опорного элемента в старой исскуственной симплекс-таблице.
+            </param>
+        </member>
+        <member name="M:IndividualLab.Controller.HandleLabelClickedSimplexMethod(ClassLibraryTools.SimplexTable,ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая удаляет все таблицы в выводе до таблицы, из которой выбран опорный элемент.
+            И выводит следующую таблицу. Если ответ найден или не может быть найден, то выводится ответ.
+            </summary>
+            <param name="oldTable">
+            Старая симплекс-таблица, в которой выбран опорный элемент.
+            </param>
+            <param name="newTable">
+            Новая симплекс-таблица, которая построена на основе выбранного опорного элемента в старой симплекс-таблице.
+            </param>
+        </member>
+        <member name="M:IndividualLab.Controller.createSimplexMethodAfterArtificialBasisMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая строит новую симплекс-таблицу после успешного завершения работы метода искусственного базиса.
+            </summary>
+            <param name="lastIterTable">
+            Последняя итерация искусственной таблицы.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IndividualLab.Controller.renderLogAfterArtificialBasis(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Функция, которая выводит базис, который нашёлся после завершения метода искусственного базиса.
+            </summary>
+            <param name="simplexTable">
+            Конечная искусственная симплекс-таблица.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IndividualLab.Controller.outputAnswerSimplexMethod(ClassLibraryTools.SimplexTable)">
+            <summary>
+            Выводит ответ, который получился в конце симплекс-метода.
+            </summary>
+            <param name="newTable">
+            Конечная симплекс-таблица.
+            </param>
+        </member>
+        <member name="T:IndividualLab.View.WIndows.DialogWindowBasisSelection">
+            <summary>
+            Диалоговое окно для выбора базиса.
+            </summary>
+            <summary>
+            DialogWindowBasisSelection
+            </summary>
+        </member>
+        <member name="M:IndividualLab.View.WIndows.DialogWindowBasisSelection.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:IndividualLab.View.WIndows.GraphicalMethodWindow">
+            <summary>
+            Interaction logic for GraphicalMethodWindow.xaml
+            </summary>
+            <summary>
+            GraphicalMethodWindow
+            </summary>
+        </member>
+        <member name="M:IndividualLab.View.WIndows.GraphicalMethodWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:IndividualLab.View.WIndows.SimplexMethodWindow">
+            <summary>
+            Interaction logic for SimplexMethodWindow.xaml
+            </summary>
+            <summary>
+            SimplexMethodWindow
+            </summary>
+        </member>
+        <member name="M:IndividualLab.View.WIndows.SimplexMethodWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:IndividualLab.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:IndividualLab.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:IndividualLab.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:IndividualLab.InputData">
+            <summary>
+            Класс для хранения входных данных.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.numberOfVariables">
+            <summary>
+            Поле для хранения кол-ва переменных.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.numberOfRestrictions">
+            <summary>
+            Поле для хранения кол-ва ограничений.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.basis">
+            <summary>
+            Поле для хранения базиса, если он выбран.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.solutionMethod">
+            <summary>
+            Поле для хранения метода решения.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.typeOfTask">
+            <summary>
+            Поле для хранения типа задачи <c>"минимизация"</c> или <c>"максимизация"</c>.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.targetFunction">
+            <summary>
+            Поле для хранения целевой функции.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.InputData.restrictions">
+            <summary>
+            Поле для хранения матрицы ограничений.
+            </summary>
+        </member>
+        <member name="T:IndividualLab.SolutionMethod">
+            <summary>
+            Класс для различных методов решения.
+            </summary>
+        </member>
+        <member name="T:IndividualLab.MainWindow">
+            <summary>
+            Главное окно программы.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.simplexMethodIsChoosen">
+            <summary>
+            Поле для решения, нужно ли отрисовывать элементы интерфейса для симплекс-метода.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.simplexMethodBasisIsArtificial">
+            <summary>
+            Поле для решения, нужно ли открывать диалоговое окно выбора базиса.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.graphicalMethodSelected">
+            <summary>
+            Поле для решения, нужно ли отрисовывать элементы интерфейса для графического метода.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.matrixHeadersForTargetFunction">
+            <summary>
+            Поле для вывода таблицы для ввода целевой функции.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.matrixHeadersForRestrictions">
+            <summary>
+            Поле для вывода таблицы для ввода ограничений.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.MainWindow.selectedBasis">
+            <summary>
+            Поле для хранения базиса, если базис выбранный.
+            </summary>
+        </member>
+        <member name="M:IndividualLab.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:IndividualLab.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:IndividualLab.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

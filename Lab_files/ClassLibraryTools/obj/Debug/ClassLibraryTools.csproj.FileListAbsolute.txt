@@ -4,3 +4,10 @@ F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\Cl
 F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.csproj.CoreCompileInputs.cache
 F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.dll
 F:\studypapka\5semestro\MethodOptimization\ProgrammsForHomeWork\IndividualLab\ClassLibraryTools\obj\Debug\ClassLibraryTools.pdb
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\bin\Debug\ClassLibraryTools.dll
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\bin\Debug\ClassLibraryTools.pdb
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\obj\Debug\ClassLibraryTools.csproj.AssemblyReference.cache
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\obj\Debug\ClassLibraryTools.csproj.CoreCompileInputs.cache
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\obj\Debug\ClassLibraryTools.dll
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\obj\Debug\ClassLibraryTools.pdb
+D:\studypapka\5semestro\Methods_Optimization\Lab_files\ClassLibraryTools\bin\Debug\ClassLibraryTools.xml

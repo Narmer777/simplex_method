@@ -1,13 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\studypapka\\5semestro\\MethodOptimization\\ProgrammsForHomeWork\\FinalLab\\Methods_Optimization\\Lab_files\\",
+  "WorkspaceRootPath": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|f:\\studypapka\\5semestro\\methodoptimization\\programmsforhomework\\finallab\\methods_optimization\\lab_files\\individuallab\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{80BECB26-964E-4DE3-B9A4-FE3884D670A3}|Documentation\\Documentation.shfbproj|D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\Documentation\\Content\\Welcome.aml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{80BECB26-964E-4DE3-B9A4-FE3884D670A3}|Documentation\\Documentation.shfbproj|solutionrelative:Documentation\\Content\\Welcome.aml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|d:\\studypapka\\5semestro\\methods_optimization\\lab_files\\individuallab\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|solutionrelative:individuallab\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\individuallab\\inputdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|solutionrelative:individuallab\\inputdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\individuallab\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|solutionrelative:individuallab\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|f:\\studypapka\\5semestro\\methodoptimization\\programmsforhomework\\finallab\\methods_optimization\\lab_files\\individuallab\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\individuallab\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5EA9AB28-5B86-4A11-B5C7-1FA89C83AF76}|IndividualLab\\IndividualLab.csproj|solutionrelative:individuallab\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -23,27 +35,63 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "F:\\studypapka\\5semestro\\MethodOptimization\\ProgrammsForHomeWork\\FinalLab\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "IndividualLab\\MainWindow.xaml",
-              "ToolTip": "F:\\studypapka\\5semestro\\MethodOptimization\\ProgrammsForHomeWork\\FinalLab\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml",
-              "RelativeToolTip": "IndividualLab\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-03T21:54:18.089Z",
+              "Title": "Welcome.aml",
+              "DocumentMoniker": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\Documentation\\Content\\Welcome.aml",
+              "RelativeDocumentMoniker": "Documentation\\Content\\Welcome.aml",
+              "ToolTip": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\Documentation\\Content\\Welcome.aml",
+              "RelativeToolTip": "Documentation\\Content\\Welcome.aml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-15T19:06:43.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Controller.cs",
+              "DocumentMoniker": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\Controller.cs",
+              "RelativeDocumentMoniker": "IndividualLab\\Controller.cs",
+              "ToolTip": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\Controller.cs",
+              "RelativeToolTip": "IndividualLab\\Controller.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:53:25.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InputData.cs",
+              "DocumentMoniker": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\InputData.cs",
+              "RelativeDocumentMoniker": "IndividualLab\\InputData.cs",
+              "ToolTip": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\InputData.cs",
+              "RelativeToolTip": "IndividualLab\\InputData.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:52:29.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "IndividualLab\\MainWindow.xaml",
+              "ToolTip": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml",
+              "RelativeToolTip": "IndividualLab\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T21:54:18.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "F:\\studypapka\\5semestro\\MethodOptimization\\ProgrammsForHomeWork\\FinalLab\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "IndividualLab\\MainWindow.xaml.cs",
-              "ToolTip": "F:\\studypapka\\5semestro\\MethodOptimization\\ProgrammsForHomeWork\\FinalLab\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\studypapka\\5semestro\\Methods_Optimization\\Lab_files\\IndividualLab\\MainWindow.xaml.cs",
               "RelativeToolTip": "IndividualLab\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T21:53:03.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T21:53:03.82Z"
             }
           ]
         }
